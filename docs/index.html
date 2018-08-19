@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pure.css Web Components Menu Example">
+    <title>Knowledge Representation with Indent and Bracket</title>
+    <link rel="stylesheet" href="./css/pure-min.css" />
+    <link rel="stylesheet" href="./css/side-menu.css" />
+    <link rel="stylesheet" href="./css/customize.css" />
+    <script src="https://www.promisejs.org/polyfills/promise-7.0.4.min.js"></script>
+    <script src="js/menu.js"></script>
+</head>
+<body>
+<style>
+code{white-space:pre-wrap}
+<style>
+
+<div id="layout">
+<header>Knowledge Representation with Indent and Bracket (KRIB)</header>
+
+<div id="main">
+
+<h1>Example</h1>
+
+<h2>KRIB</h2>
+
+<code>Type
+    Building
+Title
+    House in Bagdad, Iraq
+Place
+    [Bagdad, Iraq] and its surroundings
+Longitude/Latitude
+    None
+Component
+    [Water Tank]
+Physical Pattern of the Building
+    Outline
+        Rectangular Solid
+    Void
+        Courtyard at the Center
+    Story
+        Multi Stories with Underground Water Tank
+    Material
+        [Masonry]
+        [Wood]
+        [Glass]
+        Ground Floor is Made by Heavy Masonry. Upper Floor is Made by Light Wood and Glass.
+Source
+    Watson, Donald ed., Energy Conservation through Building Desigh, McGraw Hill Book Company, 1979, pp.4-5
+    (cited from D. Reuther: wohnhaus in Bagdad and Anderen Stadem des Trak, 1910)
+Picture
+    [BagdadHouseSection.jpg]</code>
+
+<h2>Semantics represented in RDF/Turtle</h2>
+
+<code>entry:House_in_Bagdad,_Iraq    ont:Type    "Building";
+    ont:Title    "House in Bagdad, Iraq";
+    ont:Place    entry:Bagdad,_Iraq;
+    ont:Place    "Bagdad, Iraq and its surroundings";
+    ont:Longitude/Latitude  "None";
+    ont:Component   dict:Water_Tank;
+    ont:Physical_Pattern_of_the_Building/Outline    "Rectangular Solid";
+    ont:Physical_Pattern_of_the_Building/Void   "Courtyard at the Center";
+    ont:Physical_Pattern_of_the_Building/Story  "Multi Stories with Underground Water Tank";
+    ont:Physical_Pattern_of_the_Building/Material   entry:Masonry;
+    ont:Physical_Pattern_of_the_Building/Material   entry:Wood;
+    ont:Physical_Pattern_of_the_Building/Material   entry:Glass;
+    ont:Physical_Pattern_of_the_Building/Material  "Ground Floor is Made by Heavy Masonry. Upper Floor is Made by Light Wood and Glass."
+    ont:Source  "Watson, Donald ed., Energy Conservation through Building Desigh, McGraw Hill Book Company, 1979, pp.4-5"
+    ont:Source  "(cited from D. Reuther: wohnhaus in Bagdad and Anderen Stadem des Trak, 1910)"
+    ont:Picture entry:BagdadHouseSection.jpg</code>
+
+</div>
+
+</div>
+
+</body>
+</html>

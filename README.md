@@ -1,2 +1,1 @@
-# krib
-Knowledge Representation with Indent and Bracket
+# Knowledge Representation with Indent and Bracket (KRIB)
