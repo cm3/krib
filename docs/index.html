@@ -13,7 +13,11 @@
 </head>
 <body>
 <style>
-code{white-space:pre-wrap}
+code{
+ white-space:pre-wrap;
+}
+.krib{background-color:#EEC8FF; margin:1em;}
+.turtle{background-color:#C8EEFF; margin:1em;}
 </style>
 
 <div id="layout">
@@ -21,10 +25,20 @@ code{white-space:pre-wrap}
 
 <div id="main">
 
+<h1>What is KRIB?</h1>
+
+<p>KRIB is a structured textual format that represents information in the form of graphs, making use of linking notation.</p>
+
+<ul>
+<li>Human writable, human readable and machine readable.</li>
+<li>You can interpret KRIB into HTML or RDF.</li>
+</ul>
+
 <h1>Example</h1>
 
 <h2>KRIB</h2>
 
+<div class="krib">
 <code>Type
     Building
 Title
@@ -52,9 +66,11 @@ Source
     (cited from D. Reuther: wohnhaus in Bagdad and Anderen Stadem des Trak, 1910)
 Picture
     [BagdadHouseSection.jpg]</code>
+</div>
 
 <h2>Semantics represented in RDF/Turtle</h2>
 
+<div class="turtle">
 <code>entry:House_in_Bagdad,_Iraq    ont:Type    "Building";
     ont:Title    "House in Bagdad, Iraq";
     ont:Place    entry:Bagdad,_Iraq;
@@ -71,6 +87,7 @@ Picture
     ont:Source  "Watson, Donald ed., Energy Conservation through Building Desigh, McGraw Hill Book Company, 1979, pp.4-5";
     ont:Source  "(cited from D. Reuther: wohnhaus in Bagdad and Anderen Stadem des Trak, 1910)";
     ont:Picture entry:BagdadHouseSection.jpg.</code>
+</div>
 
 </div>
 
