@@ -13,7 +13,11 @@
 </head>
 <body>
 <style>
-code{white-space:pre-wrap}
+code{
+ white-space:pre-wrap;
+}
+.krib{background-color:#EEC8FF; margin:1em;}
+.turtle{background-color:#C8EEFF; margin:1em;}
 </style>
 
 <div id="layout">
@@ -22,9 +26,81 @@ code{white-space:pre-wrap}
 <div id="main">
 <h1>KRIB specification</h1>
 
-<code>
-to be written.
-</code>
+<h2>Basics</h2>
+
+<div class="krib">
+<code>A
+	B
+		C
+		D</code>
+</div>
+
+<p>Indent with tab represent tree structure intuitively. A has a child B. B has a child C and D.</p>
+
+<div class="krib">
+<code>A
+	B
+		C
+		D
+	E
+		F</code>
+</div>
+
+<p>All the leaves of the tree are regarded as objects and others are regarded as predicates in RDF. In the KRIB representation above, C, D and F is the objects.</p>
+
+<h2>Interpretation of objects</h2>
+
+<div class="krib">
+<code>Description
+	Thatching is the craft of building a roof with dry vegetation such as straw, water reed, sedge (Cladium mariscus), rushes, heather, or palm fronds, layering the vegetation so as to shed water away from the inner roof.</code>
+</div>
+
+<p>Object with no bracket is regarded as a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-literal">literal</a>. So, the predicate and object in turtle is like below:</p>
+
+<div class="turtle">
+<code>ont:Description "Thatching is the craft of building a roof with dry vegetation such as straw, water reed, sedge (Cladium mariscus), rushes, heather, or palm fronds, layering the vegetation so as to shed water away from the inner roof.";</code>
+</div>
+
+<p>If the object is with bracket, and has the corresponding entry in the dictionrary, that object is regarded as a <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-iri">IRI reference</a>. The example in KRIB and turtle is like below:</p>
+
+<div class="krib">
+<code>References
+	[Thatching]</code>
+</div>
+
+<div class="turtle">
+<code>ont:References &lt;https://dbpedia.org/resource/Thatching&gt;;</code>
+</div>
+
+<p>The label information is provided by the dictionary also.</p>
+
+<div class="turtle">
+<code>&lt;https://dbpedia.org/resource/Thatching&gt; rdfs:label "Thatching".</code>
+</div>
+
+<p>If the object includes bracheted word, multiple graphs are output.</p>
+
+<div class="krib">
+<code>Examples
+	[Roundhouse], Iron Age European</code>
+</div>
+
+<div class="turtle">
+<code>ont:Examples "Roundhouse, Iron Age European";
+ont:Examples &lt;https://dbpedia.org/resource/Roundhouse_(dwelling)&gt;;</code>
+</div>
+
+<p>This interpretation makes the predicate <a href="https://www.w3.org/TR/owl2-syntax/#Annotation_Properties">an annotation property</a>. Because that cannot be ObjectProperty or DataProperty anymore. Therefore, the semantics of the predicate is automatically weakened. See discussion in <a href="https://www.w3.org/TR/2012/REC-owl2-syntax-20121211/">OWL documentation</a> for the detail.</p>
+
+<blockquote>
+For annotations properties note that annotations are not "semantic-free" under the OWL 2 RDF-Based Semantics. Just like every other triple or set of triples occurring in an RDF graph, an annotation is assigned a truth value by any given OWL 2 RDF-Based interpretation. Hence, although annotations are meant to be "semantically weak", i.e., their formal meaning does not significantly exceed that originating from the RDF Semantics specification, adding an annotation may still change the meaning of an ontology. A similar discussion holds for statements that are built from ontology properties, such as owl:imports, which are used to define relationships between two ontologies.
+</blockquote>
+
+<h2>Entity Linking</h2>
+
+<p>You can implemant your own logic to resolve entity mentions, which task is called "Entity linking" in NLP (Natural Language Processing, one of computer science domains).</p>
+
+<p>Addition to the surface string of entity mention, you can make use of (1) the path to it and (2) the list of all the object literal in the item.</p>
 
 </div>
 
