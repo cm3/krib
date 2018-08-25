@@ -18,6 +18,7 @@ code{
 }
 .krib{background-color:#EEC8FF; margin:1em;}
 .turtle{background-color:#C8EEFF; margin:1em;}
+table td{padding:3px;}
 </style>
 
 <div id="layout">
@@ -25,7 +26,7 @@ code{
 
 <div id="main">
 
-<h1>What is KRIB?</h1>
+<h2>What is KRIB?</h2>
 
 <p>KRIB is a structured textual format that represents information in the form of graphs, making use of linking notation.</p>
 
@@ -34,9 +35,33 @@ code{
 <li>You can interpret KRIB into HTML or RDF.</li>
 </ul>
 
-<h1>Example</h1>
+<h2>When to use?</h2>
 
-<h2>KRIB</h2>
+<p>If you have homogeneous and simple data, CSV will help you the most. For example, thousands of words translated into another language can be represented like this:</p>
+
+<table border="2">
+<tr><td>Apple</td><td>りんご</td></tr>
+<tr><td>Bean</td><td>まめ</td></tr>
+<tr><td>…</td><td>…</td></tr>
+<tr><td>Peach</td><td>もも</td></tr>
+<tr><td>Tomato</td><td>とまと</td></tr>
+</table>
+
+<p>It is easy to understand and convert this data to RDF.</p>
+
+<p>If your data has:</p>
+
+<ul>
+<li>various types of entities</li>
+<li>various types of properties (sometimes there are missing and N.A. values)</li>
+<li>a long description</li>
+</ul>
+
+<p>, KRIB allows you to understand and improve your data step by step. You can concentrate on writing your datafirst. If there are additional property, just name it and write it. Then, you can connect each element by arranging bracketed named entities or analyse the frequency of each property or words, and you can improve your schema based on it.</p>
+
+<h2>Example</h2>
+
+<h3>KRIB</h3>
 
 <div class="krib">
 <code>Type
@@ -62,13 +87,13 @@ Physical Pattern of the Building
         [Glass]
         Ground Floor is Made by Heavy Masonry. Upper Floor is Made by Light Wood and Glass.
 Source
-    Watson, Donald ed., Energy Conservation through Building Desigh, McGraw Hill Book Company, 1979, pp.4-5
+    Watson, Donald ed., Energy Conservation through Building Design, McGraw Hill Book Company, 1979, pp.4-5
     (cited from D. Reuther: wohnhaus in Bagdad and Anderen Stadem des Trak, 1910)
 Picture
     [BagdadHouseSection.jpg]</code>
 </div>
 
-<h2>Semantics represented in RDF/Turtle</h2>
+<h3>Semantics represented in RDF/Turtle</h3>
 
 <div class="turtle">
 <code>entry:House_in_Bagdad,_Iraq    ont:Type    "Building";

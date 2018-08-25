@@ -96,6 +96,57 @@ ont:Examples &lt;https://dbpedia.org/resource/Roundhouse_(dwelling)&gt;;</code>
 For annotations properties note that annotations are not "semantic-free" under the OWL 2 RDF-Based Semantics. Just like every other triple or set of triples occurring in an RDF graph, an annotation is assigned a truth value by any given OWL 2 RDF-Based interpretation. Hence, although annotations are meant to be "semantically weak", i.e., their formal meaning does not significantly exceed that originating from the RDF Semantics specification, adding an annotation may still change the meaning of an ontology. A similar discussion holds for statements that are built from ontology properties, such as owl:imports, which are used to define relationships between two ontologies.
 </blockquote>
 
+<h2>Bracketed object in the middle of the branch</h2>
+
+<div class="krib">
+<code>A
+	B
+		[C]
+			D
+				E
+			F
+				G
+		[H]
+			I
+				J
+			K
+				L
+	M
+		N</code>
+</div>
+
+<p>Bracket is only allowed to object, in other words, a bracketed word is regarded as object even if that appears in the middle of the branch. This allows you to describe complecated data, as much as JSON.</p>
+
+<h2>Comments</h2>
+
+There is no comment notation available in KRIB. What you write is what you get. 
+
+<h2>Templating<sup>(beta)</sup></h2>
+
+Each class, which is the value of <em>Type</em> can have a template for its instance.
+
+<div class="krib">
+<code>Type
+	Map
+Title
+	Kuala Lumpur
+Latitude
+	3.1412
+Longitude
+	101.68653</code>
+</div>
+
+<div class="krib">
+<code>Type
+	Class
+Title
+	Map
+EJS
+	&lt;iframe src="https://maps.google.com/maps?q=&lt;?= Latitude ?&gt;,&lt;?= Longitude ?&gt;&hl=en&z=6&amp;output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen&gt;&lt;/iframe&gt;</code>
+</div>
+
+<iframe src="https://maps.google.com/maps?q=3.1412,101.68653&hl=en&z=6&output=embed" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
 <h2>Entity Linking</h2>
 
 <p>You can implemant your own logic to resolve entity mentions, which task is called "Entity linking" in NLP (Natural Language Processing, one of computer science domains).</p>
