@@ -6,3 +6,8 @@ body{
 	margin:1em;
 	background:#FDFCF6;
 }
+#brand{
+  font-family:serif;
+  font-size:x-large;
+  font-weight:bold;
+}

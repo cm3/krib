@@ -9,22 +9,19 @@ Copyright: 2013 Yahoo!
 BSD License
 https://github.com/yahoo/pure/blob/master/LICENSE.md
 */
+
+/* set title and menu here */
+const title = "Knowledge Representation with Indent and Bracket (KRIB)";
+const menuDict = {
+    "Top":"index.html",
+    "Specification":"spec.html",
+}
+
 /* --------------------------------------------------------------- */
-/* check rel='import' is supported or not. if not, load "webcomponents-lite" as polyfill */
+/* polyfill 'closest' func */
 
 const loadPolyfill = function(){
     return new Promise(function (resolve, reject) {
-        if ('import' in document.createElement('link')) { //check 'import' is supported or not
-            resolve("loadPolyfill");
-            console.log("loadPolyfill skipped.");
-        } else {
-            let script = document.createElement('script');
-            script.src = 'http://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.1.0/webcomponents-lite.js';
-            document.body.appendChild(script);
-            script.onload = resolve("polyfill");
-            console.log("loadPolyfill resolved.");
-        }
-        //polyfill 'closest' func
         if (!Element.prototype.matches){
             Element.prototype.matches = Element.prototype.msMatchesSelector ||
                 Element.prototype.webkitMatchesSelector;}
@@ -39,6 +36,8 @@ const loadPolyfill = function(){
                 return null;
             };
         }
+        resolve("loadPolyfill");
+        console.log("loadPolyfill resolved.");
     });
 }
 
@@ -47,20 +46,20 @@ const loadPolyfill = function(){
 
 const loadHeader = function () {
     return new Promise(function (resolve, reject) {
-        let link = document.createElement('link');
-        link.rel = 'import';
-        link.href = './component/menu.html'
-        link.onload = function(e){
-            const template = link.import.querySelector('template');
-            const clone = document.importNode(template.content, true);
-            document.querySelector('header').replaceChild(clone, document.querySelector('header').firstChild);
-            resolve("loadHeader");
-            console.log("loadHeader resolved.")
+        document.getElementById("brand").innerHTML = title;
+        for(let key in menuDict){
+            let li1=document.createElement('li');
+            li1.className='pure-menu-item';
+            let a1=document.createElement('a');
+            a1.setAttribute('href',menuDict[key]);
+            a1.className='pure-menu-link';
+            li1.appendChild(a1);
+            var txt1=document.createTextNode(key);
+            a1.appendChild(txt1);
+            document.getElementById("menuList").appendChild(li1);
         }
-        link.onerror = function(e) {
-            console.log(new Error("loadHeader failed."));
-        };
-        document.head.appendChild(link);
+        resolve("loadHeader");
+        console.log("loadHeader resolved.")
     });
 }
 
