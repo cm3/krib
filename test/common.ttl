@@ -1,0 +1,2 @@
+@prefix prop: <https://cm3.github.io/krib/property/> .
+@prefix entry: <https://cm3.github.io/krib/entry/> .

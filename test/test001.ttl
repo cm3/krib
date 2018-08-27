@@ -1,0 +1,5 @@
+<https://cm3.github.io/krib/entry/A> 
+<https://cm3.github.io/krib/property/Title> "A";
+<https://cm3.github.io/krib/property/B> "C";
+<https://cm3.github.io/krib/property/D/E> "F";
+<https://cm3.github.io/krib/property/D/G> "H".
